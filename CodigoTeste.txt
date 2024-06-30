@@ -11,7 +11,7 @@ public class Program
         int resultado = x + y;
 
         if (resultado > 15)
-        {
+
             Console.WriteLine("O resultado é maior que 15.") ;
         }
         else
