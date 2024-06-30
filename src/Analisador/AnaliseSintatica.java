@@ -1,7 +1,10 @@
 package Analisador;
 
+import variaveis.Variavel;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 public class AnaliseSintatica {
@@ -32,13 +35,13 @@ public class AnaliseSintatica {
         }
 
         // Regra 3: Verificar a estrutura do 'case'
-        if (linha.contains("case")) {
-            if (!linha.matches(".*case\\s+[^:]+:\\s*\\{?.*")) {
-                listaErros.add("Erro na linha " + numLinha + ": Estrutura 'case' incorreta.");
-            } else if (!linha.contains("{") && (proximaLinha == null || !proximaLinha.trim().startsWith("{"))) {
-                listaErros.add("Erro na linha " + numLinha + ": Bloco 'case' sem abertura de chaveta.");
-            }
-        }
+           /* if (linha.contains("case")) {
+                if (!linha.matches(".*case\\s+[^:]+:\\s*\\{?.*")) {
+                    listaErros.add("Erro na linha " + numLinha + ": Estrutura 'case' incorreta.");
+                } else if (!linha.contains("{") && (proximaLinha == null || !proximaLinha.trim().startsWith("{"))) {
+                    listaErros.add("Erro na linha " + numLinha + ": Bloco 'case' sem abertura de chaveta.");
+                }
+            }*/
 
         // Regra 4: Verificar a estrutura do 'for'
         if (linha.contains("for")) {
@@ -68,13 +71,16 @@ public class AnaliseSintatica {
         }
 
         // Regra 7: Verificar a estrutura do 'do-while'
-       /* if (linha.contains("do")) {
+        if (linha.contains("do")) {
             if (!linha.matches(".*do\\s*\\{?.*")) {
                 listaErros.add("Erro na linha " + numLinha + ": Estrutura 'do-while' incorreta.");
             } else if (!linha.contains("{") && (proximaLinha == null || !proximaLinha.trim().startsWith("{"))) {
                 listaErros.add("Erro na linha " + numLinha + ": Bloco 'do-while' sem abertura de chaveta.");
             }
-        }*/
+        }
+
+
+
 
         // Regra 8: Verificar a estrutura do 'foreach'
         if (linha.contains("foreach")) {

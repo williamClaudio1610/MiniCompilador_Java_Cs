@@ -35,4 +35,19 @@ public class Variavel {
     public void setValor(String valor) {
         Valor = valor;
     }
+
+    public boolean isCompatible(String valor) {
+        switch (this.tipo) {
+            case "int":
+                return valor.matches("\\d+");
+            case "float":
+                return valor.matches("\\d+\\.\\d+");
+            case "string":
+                return valor.matches("\".*\"");
+            case "bool":
+                return valor.equals("true") || valor.equals("false");
+            default:
+                return false;
+        }
+    }
 }
