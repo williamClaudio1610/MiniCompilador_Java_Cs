@@ -1,28 +1,32 @@
 package Analisador;
 
+import variaveis.Variavel;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
-import variaveis.Variavel;
-
 import java.util.List;
+import java.util.Map;
 
 public class LeitorFicheiro {
 
     int numLinha = 0;
-    private AnaliseSintatica anSint = new AnaliseSintatica();
+    private AnaliseSintatica anSint;
     private static final String nomeFIle = "CodigoTeste.txt";
     private AnaLex analex = new AnaLex();
 
-    private HashMap<String, Variavel> variaveis;
+    private Map<String, Variavel> variaveis;
 
     public LeitorFicheiro() {
         variaveis = new HashMap<>();
+        anSint = new AnaliseSintatica(variaveis);
     }
 
+    public Map<String, Variavel> getVariaveis() {
+        return variaveis;
+    }
 
     public void carregarFicheiroCodigo() {
         File ficheiro = new File(nomeFIle);
@@ -42,6 +46,7 @@ public class LeitorFicheiro {
                     }
 
                     // Verificar se a linha contém tokens válidos
+
                     boolean tokenValido = analex.processarLinha(linhaAtual);
                     if (!tokenValido) {
                         anSint.getListaErros().add("Erro na linha " + numLinha + ": Token inválido.");
@@ -57,6 +62,13 @@ public class LeitorFicheiro {
                 for (String erro : erros) {
                     System.out.println(erro);
                 }
+                System.out.printf("\n");
+                // exibir a lista de variaveis que foram guardadas
+                for (Map.Entry<String, Variavel> entry : anSint.getVariaveis().entrySet()) {
+                    String nome = entry.getKey();
+                    Variavel variavel = entry.getValue();
+                    System.out.println("Nome: " + nome + ", Tipo: " + variavel.getTipo() + ", Valor: " + variavel.getValor());
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -64,5 +76,4 @@ public class LeitorFicheiro {
             System.out.println("O ficheiro não existe.");
         }
     }
-
 }

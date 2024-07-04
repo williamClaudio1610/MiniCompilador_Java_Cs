@@ -4,12 +4,12 @@ public class Variavel {
 
     private String tipo;
     private String nome;
-    private String Valor;
+    private String valor;
 
     public Variavel(String tipo, String nome, String valor) {
         this.tipo = tipo;
         this.nome = nome;
-        Valor = valor;
+        this.valor = valor;
     }
 
     public String getTipo() {
@@ -29,25 +29,10 @@ public class Variavel {
     }
 
     public String getValor() {
-        return Valor;
+        return valor;
     }
 
     public void setValor(String valor) {
-        Valor = valor;
-    }
-
-    public boolean isCompatible(String valor) {
-        switch (this.tipo) {
-            case "int":
-                return valor.matches("\\d+");
-            case "float":
-                return valor.matches("\\d+\\.\\d+");
-            case "string":
-                return valor.matches("\".*\"");
-            case "bool":
-                return valor.equals("true") || valor.equals("false");
-            default:
-                return false;
-        }
+        this.valor = valor;
     }
 }

@@ -5,10 +5,14 @@ public class Program
 {
     static void Main (){
 
-        int x = 10 ;
+        int x = 10;
         int y = 20 ;
-        double zzz = 44;
+        int zzz = 44;
+        int int = 50;
         int resultado = x + y;
+        String nome = "william";
+        double william = 14.56;
+
 
         if (resultado > 15)
         {

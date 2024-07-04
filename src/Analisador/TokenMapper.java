@@ -243,12 +243,20 @@ public class TokenMapper {
         pegaToken.put("ushort", Tokens.TOKEN_Ushort);
     }
 
+
     public static Tokens getToken(String symbol) {
         return pegaToken.get(symbol);
     }
 
     public static Map<String, Tokens> getPegaToken() {
         return Collections.unmodifiableMap(pegaToken);
+    }
+
+    public static boolean existeToken(String token) {
+        if(pegaToken.containsKey(token)){
+            return true;
+        }
+        return false;
     }
 
 }

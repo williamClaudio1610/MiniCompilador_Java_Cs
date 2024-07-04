@@ -52,7 +52,7 @@ public class AnaLex {
                             case "object":
                             case "sbyte":
                             case "short":
-                            case "string":
+                            case "String":
                             case "uint":
                             case "ulong":
                             case "ushort":
