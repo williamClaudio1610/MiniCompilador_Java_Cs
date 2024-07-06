@@ -1,11 +1,9 @@
 
 using System;
 
-public class Program
+public class TesteCompiladores
 {
-    static void Main (){
-
-        int x = 10;
+          int x = 10;
         int y = 20 ;
         int zzz = 44;
         int int = 50;
@@ -22,5 +20,7 @@ public class Program
         {
             Console.WriteLine("O resultado é menor ou igual a 15.");
         }
-    }
+
+        Console.WriteLine("O resultado é menor ou igual a %d %d.", x);
+
 }

@@ -1,5 +1,6 @@
 package Analisador;
 
+import classdecl.DecClasse;
 import variaveis.Variavel;
 
 import java.io.BufferedReader;
@@ -46,7 +47,6 @@ public class LeitorFicheiro {
                     }
 
                     // Verificar se a linha contém tokens válidos
-
                     boolean tokenValido = analex.processarLinha(linhaAtual);
                     if (!tokenValido) {
                         anSint.getListaErros().add("Erro na linha " + numLinha + ": Token inválido.");
@@ -68,6 +68,14 @@ public class LeitorFicheiro {
                     String nome = entry.getKey();
                     Variavel variavel = entry.getValue();
                     System.out.println("Nome: " + nome + ", Tipo: " + variavel.getTipo() + ", Valor: " + variavel.getValor());
+                }
+
+                System.out.printf("\nLista de classes");
+                // exibir a lista de classes que foram guardadas
+                for (Map.Entry<String, DecClasse> entry : anSint.getClassDeclaration().entrySet()) {
+                    String nome = entry.getKey();
+                    DecClasse classes = entry.getValue();
+                    System.out.println("Nome: " + classes.getNomeClasse() + ", Tipo: " + classes.getTipoClasse());
                 }
             } catch (IOException e) {
                 e.printStackTrace();
