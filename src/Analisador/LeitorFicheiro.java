@@ -49,7 +49,7 @@ public class LeitorFicheiro {
                     // Verificar se a linha contém tokens válidos
                     boolean tokenValido = analex.processarLinha(linhaAtual);
                     if (!tokenValido) {
-                        anSint.getListaErros().add("Erro na linha " + numLinha + ": Token inválido.");
+                        anSint.getListaErros().add("Erro na linha " + numLinha + ": Token descohecido.");
                         continue; // Pula para a próxima linha
                     }
 

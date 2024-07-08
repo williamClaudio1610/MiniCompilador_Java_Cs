@@ -3,16 +3,26 @@ using System;
 
 public class TesteCompiladores
 {
-          int x = 10;
+    static void main(String[] args){
+
+        int x = 10;
+        int abc = 10;
         int y = 20 ;
         int zzz = 44;
-        int int = 50;
         int resultado = x + y;
         String nome = "william";
         double william = 14.56;
 
+        int foreachState = 50;
 
-        if (resultado > 15)
+
+        bool exemplo = false;
+
+          foreach ( int bb in colec ){
+
+          }
+
+        if ( x )
         {
             Console.WriteLine("O resultado é maior que 15.") ;
         }
@@ -21,6 +31,8 @@ public class TesteCompiladores
             Console.WriteLine("O resultado é menor ou igual a 15.");
         }
 
-        Console.WriteLine("O resultado é menor ou igual a %d %d.", x);
+        /*Console.WriteLine("O resultado é menor ou igual a %d %d.", x);*/
 
+    }
 }
+

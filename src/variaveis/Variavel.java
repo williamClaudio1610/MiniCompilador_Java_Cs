@@ -35,4 +35,11 @@ public class Variavel {
     public void setValor(String valor) {
         this.valor = valor;
     }
+
+    public String retornarTipo(String nomeVar) {
+        if (this.nome.equals(nomeVar)) {
+            return this.tipo;
+        }
+        return null;
+    }
 }
