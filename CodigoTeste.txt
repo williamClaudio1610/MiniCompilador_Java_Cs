@@ -7,22 +7,18 @@ public class TesteCompiladores
 
         int x = 10;
         int abc = 10;
-        int y = 20 ;
+        int y ;
         int zzz = 44;
         int resultado = x + y;
         String nome = "william";
         double william = 14.56;
 
+
         int foreachState = 50;
-
-
         bool exemplo = false;
 
-          foreach ( int bb in colec ){
 
-          }
-
-        if ( x )
+        if ( exemplo )
         {
             Console.WriteLine("O resultado é maior que 15.") ;
         }

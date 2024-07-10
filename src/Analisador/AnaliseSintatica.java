@@ -76,13 +76,18 @@ public class AnaliseSintatica {
             // Verificar declaração de variáveis
             verificarDeclaracaoVariavel(linha, numLinha);
 
+
             // Verificar estruturas de controle
             verificarExpressoesBooleanas(linha, numLinha, proximaLinha);
 
             // Verificar parênteses, chavetas ou colchetes desbalanceados em todo o código
             verificarBalanceamento(linha, numLinha);
 
+
             verificarAtribuicaoValor(linha, numLinha);
+
+            // Verificar ponto e vírgula no final
+            verificarPontoEVirgula(linha, numLinha);
 
             // Verificar se a linha anterior tem uma chaveta de fechamento no início
             if (linhaAnterior != null) {
@@ -91,6 +96,7 @@ public class AnaliseSintatica {
 
             // Verificar chamadas de Console.WriteLine e Console.Write
             anSem.verificarFormatString(linha, numLinha);
+            
         }
 
         // Atualizar a linha anterior
@@ -519,6 +525,40 @@ public class AnaliseSintatica {
             listaErros.add("Erro na linha " + numLinha + ": Método Main não declarado corretamente.");
         }
     }
+
+    private void verificarPontoEVirgula(String linha, int numLinha) {
+        // Remover espaços em branco no início e no fim da linha
+        linha = linha.trim();
+
+        // Estruturas booleanas
+        String[] estruturasBooleanas = {"if", "for", "while", "foreach", "else", "do"};
+
+        // Verificar se a linha contém uma estrutura booleana ou chavetas
+        boolean isEstruturaBooleana = false;
+        for (String estrutura : estruturasBooleanas) {
+            if (linha.startsWith(estrutura)) {
+                isEstruturaBooleana = true;
+                break;
+            }
+        }
+
+        // Verificar se a linha é uma declaração ou operação e se termina com ;
+        if (!linha.isEmpty() &&
+                !linha.contains("{") &&
+                !linha.contains("}") &&
+                !isEstruturaBooleana &&
+                !linha.startsWith("/*") &&
+                !linha.startsWith("*") &&
+                !linha.startsWith("//") &&
+                !linha.startsWith("using") &&
+                !linha.startsWith("class")) {
+            if (!linha.endsWith(";")) {
+                listaErros.add("Erro na linha " + numLinha + ": Declaração ou operação sem ponto e vírgula.");
+            }
+        }
+    }
+
+
 
 
 
